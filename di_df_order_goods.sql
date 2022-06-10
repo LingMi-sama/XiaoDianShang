@@ -1,0 +1,62 @@
+-- MySQL dump 10.13  Distrib 8.0.13, for Win64 (x86_64)
+--
+-- Host: 127.0.0.1    Database: di
+-- ------------------------------------------------------
+-- Server version	8.0.13
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+ SET NAMES utf8 ;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `df_order_goods`
+--
+
+DROP TABLE IF EXISTS `df_order_goods`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+ SET character_set_client = utf8mb4 ;
+CREATE TABLE `df_order_goods` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `create_time` datetime(6) NOT NULL,
+  `update_time` datetime(6) NOT NULL,
+  `is_delete` tinyint(1) NOT NULL,
+  `count` int(11) NOT NULL,
+  `price` decimal(10,2) NOT NULL,
+  `comment` varchar(256) NOT NULL,
+  `order_id` varchar(128) NOT NULL,
+  `sku_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `df_order_goods_order_id_6958ee23_fk_df_order_info_order_id` (`order_id`),
+  KEY `df_order_goods_sku_id_b7d6e04e_fk_df_goods_sku_id` (`sku_id`),
+  CONSTRAINT `df_order_goods_order_id_6958ee23_fk_df_order_info_order_id` FOREIGN KEY (`order_id`) REFERENCES `df_order_info` (`order_id`),
+  CONSTRAINT `df_order_goods_sku_id_b7d6e04e_fk_df_goods_sku_id` FOREIGN KEY (`sku_id`) REFERENCES `df_goods_sku` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `df_order_goods`
+--
+
+LOCK TABLES `df_order_goods` WRITE;
+/*!40000 ALTER TABLE `df_order_goods` DISABLE KEYS */;
+INSERT INTO `df_order_goods` VALUES (1,'2021-06-16 03:07:00.124545','2021-06-16 03:07:00.124545',0,2,10.00,'','202106161106592',2),(2,'2021-06-16 03:13:48.643289','2021-06-16 03:13:48.643289',0,1,10.00,'','202106161113482',2),(3,'2021-06-16 03:19:59.747150','2021-06-16 03:19:59.747150',0,2,10.00,'','202106161119592',2),(4,'2021-06-17 07:00:15.433403','2021-06-17 07:00:15.433403',0,1,6.60,'6666','202106171500152',8),(5,'2021-06-18 10:31:25.648520','2021-06-18 10:31:25.648520',0,1,6.60,'','202106181831252',8),(6,'2021-06-18 10:31:25.798644','2021-06-18 10:31:25.798644',0,1,5.00,'12','202106181831252',7),(7,'2021-06-18 12:03:29.440348','2021-06-18 12:03:29.440348',0,1,10.00,'66666','202106182003292',2),(8,'2021-06-18 12:03:29.643080','2021-06-18 12:03:29.643080',0,1,5.00,'66666','202106182003292',7),(9,'2021-06-19 01:21:12.708295','2021-06-19 01:21:12.708295',0,1,5.00,'66666','202106190921126',7),(10,'2021-06-19 03:49:45.955619','2021-06-19 03:49:45.955619',0,1,10.00,'','202106191149452',1),(11,'2021-06-19 05:31:59.003097','2021-06-19 05:31:59.003097',0,1,6.60,'123','202106191331587',8);
+/*!40000 ALTER TABLE `df_order_goods` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2021-06-20 13:05:58
